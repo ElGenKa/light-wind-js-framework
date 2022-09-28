@@ -44,8 +44,8 @@ function _lwCreateElement(nodeName, ID, classArray, parent){
     if(parent){
         if( typeof parent === 'string' )
             parent = lwID(parent)
-        if(parent.appdenChild)
-            parent.appdenChild(newElement)
+        if(parent.appendChild)
+            parent.appendChild(newElement)
     }
     return _prepareReturnElement(newElement)
 }
