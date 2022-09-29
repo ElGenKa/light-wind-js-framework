@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,10 @@
     <title>Document</title>
     <script src="../lw.js"></script>
 </head>
+
 <body>
 </body>
+
 </html>
 
 <script>
@@ -17,13 +20,17 @@
 
     const bodyElement = lwTag('body')
     const container = lwDiv('container', ['container'], bodyElement)
-    const tableRow =  lwDiv('table1', ['row'], 'container')
-    for(let i=0; i<3; i++){
-        lwDiv('t1_col_'+i, ['col'], 'table1').html(`<p class="text-primary">.text-primary</p>`).attr('data-type', 'col')
+    const tableRow = lwDiv('table1', ['row'], 'container')
+    for (let i = 0; i < 3; i++) {
+        lwDiv('t1_col_' + i, ['col'], 'table1')
+            .html(`<p class="text-primary">.text-primary</p>`)
+            .attr('data-type', 'col')
     }
     lwDiv('table2', ['row'], 'container')
-    for(let i=0; i<3; i++){
-        lwDiv('t2_col_'+ i, ['col'], 'table2')
-        lwP('t2_p_' + i, [], 't2_col_' + i).addClass('text-primary').text('simple text ' + i)
+    for (let i = 0; i < 3; i++) {
+        lwDiv('t2_col_' + i, ['col'], 'table2')
+        lwP('t2_p_' + i, [], 't2_col_' + i)
+            .addClass('text-primary')
+            .text('simple text ' + i)
     }
 </script>
