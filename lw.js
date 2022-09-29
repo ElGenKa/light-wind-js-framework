@@ -1,5 +1,12 @@
 "use strict"
 
+/*
+* @name Light Wind
+* @author Denis (ElGen) Ivanov
+* @version 0.1
+* @description dom library
+*/
+
 function lwPrepareElement(element) {
     if (!element)
         return element
