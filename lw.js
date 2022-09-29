@@ -36,6 +36,32 @@ function _prepareReturnElement(element) {
         element.style.display = 'block'
         return element
     }
+    element.attr = (attribute, value = null) => {
+        if(value){
+            element.setAttribute(attribute, value)
+            return element
+        }
+        return element.getAttribute(attribute)
+    }
+    element.attrs = (attributes) => {
+        for(let key in attributes){
+            element.attr(key, attributes[key])
+        }
+        return element
+    }
+    element.addClass = (className) => {
+        element.classList.add(className)
+        return element
+    }
+    element.removeClass = (className) => {
+        element.classList.remove(className)
+        return element
+    }
+    element.hasClass = (className) => {
+        if(element.classList.contains(className))
+            return true
+        return false
+    }
     element.isInitLW = true
     return element
 }
