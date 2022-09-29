@@ -5,28 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link rel="stylesheet" href="../lw.css">
     <script src="../lw.js"></script>
 </head>
 <body>
-    <div id="div1"></div>
-    <div id="div2"></div>
-    <div id="div3"></div>
 </body>
 </html>
 
 <script>
-    lwUseStyles();
+    lwIncludeJS('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js')
+    lwIncludeCSS('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css')
 
-    console.log(lwID('div1'));
-    lwDiv('div4', [], lwID('div2'));
-    lwID('div1').text('test');
-    lwID('div3').html("<b>test</b>");
-
-    //lwID('div1').hide();
-
-    //lwDiv('container', [], lwTag('body'));
-
-    console.log( lwSelectorAll('div') );
+    const bodyElement = lwTag('body')
+    const container = lwDiv('container', ['container'], bodyElement)
+    const tableRow =  lwDiv('table1', ['row'], 'container')
+    for(let i=0; i<3; i++){
+        lwDiv('t1_col_'+i, ['col'], 'table1').html(`<p class="text-primary">.text-primary</p>`).attr('data-type', 'col')
+    }
+    lwDiv('table2', ['row'], 'container')
+    for(let i=0; i<3; i++){
+        lwDiv('t2_col_'+ i, ['col'], 'table2')
+        lwP('t2_p_' + i, [], 't2_col_' + i).addClass('text-primary').text('simple text ' + i)
+    }
 </script>
