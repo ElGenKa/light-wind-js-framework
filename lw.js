@@ -155,16 +155,6 @@ function lwP(ID, classArray = [], parent = null) {
 
 /* --------------------------------- */
 
-let lwConfig = {
-    useStyles: false
-}
-
-function lwUseStyles(isUse = true){
-    lwConfig.useStyles = isUse
-}
-
-/* --------------------------------- */
-
 function lwScrollTo(element, offset = 140, behavior = 'smooth'){
     if(lwIsStr(element))
         element = lwID(element)
