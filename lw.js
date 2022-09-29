@@ -245,6 +245,17 @@ function lwSmall(ID = null, classArray = [], parent = null) {
  * @param parent {String|HTMLElement}
  * @returns {HTMLElement}
  */
+function lwStrong(ID = null, classArray = [], parent = null) {
+    return lwCreateElement('strong', ID, classArray, parent)
+}
+
+/**
+ *
+ * @param ID {String|Null}
+ * @param classArray {Array}
+ * @param parent {String|HTMLElement}
+ * @returns {HTMLElement}
+ */
 function lwSpan(ID = null, classArray = [], parent = null) {
     return lwCreateElement('span', ID, classArray, parent)
 }
