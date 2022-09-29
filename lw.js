@@ -30,13 +30,14 @@ function lwPrepareElement(element) {
         }
         return element.value
     }
-    element.text = (text = null) => {
-        if (text) {
-            element.innerText = text
-            return element
+    if (element.tagName !== "A")
+        element.text = (text = null) => {
+            if (text) {
+                element.innerText = text
+                return element
+            }
+            return element.text
         }
-        return element.text
-    }
     element.html = (html = null) => {
         if (html) {
             element.innerHTML = html
