@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="../lw.css" class="css">
     <script src="../lw.js"></script>
 </head>
 <body>
@@ -16,8 +17,16 @@
 </html>
 
 <script>
+    lwUseStyles();
+
     console.log(lwID('div1'));
     lwDiv('div4', [], lwID('div2'));
     lwID('div1').text('test');
     lwID('div3').html("<b>test</b>");
+
+    //lwID('div1').hide();
+
+    //lwDiv('container', [], lwTag('body'));
+
+    console.log( lwSelectorAll('div') );
 </script>
