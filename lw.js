@@ -9,25 +9,56 @@
  */
 
 let lwElementsCounter = 0;
+
+/**
+ * Билдер элементов, алтернатива процедурному принципу
+ */
 class lwHTMLElement {
+    /**
+     * Принимает в себя TagName элемента для построения
+     * @param elementType {String}
+     */
     constructor(elementType) {
         this.elementType = elementType
         this.classArray = []
         this.id = 'lwAutoID_' + lwElementsCounter + Math.floor(Math.random() * 999999999)
         this.parentElement = null
     }
+
+    /**
+     * Принимапет в себя массив классов
+     * @param classArray {Array}
+     * @returns {lwHTMLElement}
+     */
     setClasses(classArray = []) {
         this.classArray = classArray
         return this
     }
+
+    /**
+     * Принимает в себя ID, если id не указывать -  будет сгенерирован автоматически
+     * @param id {String}
+     * @returns {lwHTMLElement}
+     */
     setId(id) {
         this.id = id
         return this
     }
+
+    /**
+     * Принимает елемент, в котором будет отрисван новый элемент, либо строку (id) элемента
+     * @param parentElement {HTMLElement|String}
+     * @returns {lwHTMLElement}
+     */
     setParent(parentElement) {
         this.parentElement = parentElement
         return this
     }
+
+    /**
+     * Сборка/Отрисовка элемента, вернет готовый HTMLElement
+     * @returns {HTMLElement}
+     */
     draw() {
         if (!this.id)
             this.id = 'lwAutoID_' + lwElementsCounter + Math.floor(Math.random() * 999999999)
