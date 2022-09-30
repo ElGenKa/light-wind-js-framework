@@ -8,6 +8,44 @@
  * @git https://github.com/ElGenKa/light-wind-js-library
  */
 
+let lwElementsCounter = 0;
+class lwHTMLElement {
+    constructor(elementType) {
+        this.elementType = elementType
+        this.classArray = []
+        this.id = 'lwAutoID_' + lwElementsCounter + Math.floor(Math.random() * 999999999)
+        this.parentElement = null
+    }
+    setClasses(classArray = []) {
+        this.classArray = classArray
+        return this
+    }
+    setId(id) {
+        this.id = id
+        return this
+    }
+    setParent(parentElement) {
+        this.parentElement = parentElement
+        return this
+    }
+    draw() {
+        if (!this.id)
+            this.id = 'lwAutoID_' + lwElementsCounter + Math.floor(Math.random() * 999999999)
+        let newElement = document.createElement(this.elementType)
+        newElement.id = this.id
+        this.classArray.forEach(e => {
+            newElement.classList.add(e)
+        })
+        if (this.parentElement) {
+            if (lwIsStr(this.parentElement))
+                this.parentElement = lwID(this.parentElement)
+            if (this.parentElement.appendChild)
+                this.parentElement.appendChild(newElement)
+        }
+        return lwPrepareElement(newElement)
+    }
+}
+
 /**
  * Инициализирует дополнительный функционал элемента
  * @param element
@@ -74,17 +112,22 @@ function lwPrepareElement(element) {
         element.classList.remove(className)
         return element
     }
+    element.switchClass = (classA, classB) => {
+        element.classList.remove(classA)
+        element.classList.add(classB)
+        return element
+    }
     element.hasClass = (className) => {
         return element.classList.contains(className);
-
+    }
+    element.disable = (isDisable = true) => {
+        element.disabled = isDisable
     }
     element.isInitLW = true
     return element
 }
 
 /* Функции взаимодействия            */
-
-/* --------------------------------- */
 
 /**
  * Возвращает элемент по его ID
@@ -175,9 +218,6 @@ function lwClass(_class) {
 }
 
 /* Функции создания элементов        */
-/* --------------------------------- */
-
-let lwElementsCounter = 0;
 
 /**
  * Создает элемент, присваивает ему ID (если передан), добавляет классы и добавляет в переданный parent
@@ -559,7 +599,6 @@ function lwTr(ID = null, classArray = [], parent = null) {
 }
 
 /* Дополнительные фичи               */
-/* --------------------------------- */
 
 /**
  * Скроллит к элементу. Принимает либо id либо эдемент
@@ -619,8 +658,16 @@ function _lwIncludeProcessor(html) {
     }
 }
 
+/**
+ * Интегрирует бутстрап 5.2.0
+ */
+
+function bootStrapIntegration() {
+    lwIncludeJS('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js')
+    lwIncludeCSS('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css')
+}
+
 /* Функции проверок типов            */
-/* --------------------------------- */
 
 /**
  * Проверяет на число

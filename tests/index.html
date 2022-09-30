@@ -15,8 +15,7 @@
 </html>
 
 <script>
-    lwIncludeJS('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js')
-    lwIncludeCSS('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css')
+    bootStrapIntegration()
 
     const bodyElement = lwTag('body')
     const container = lwDiv('container', ['container'], bodyElement)
@@ -33,4 +32,16 @@
             .addClass('text-primary')
             .text('simple text ' + i)
     }
+
+
+    lwButton('testBtn1', ['btn', 'btn-primary', 'btn-small'], 'container')
+        .text('Simple btn 1');
+
+    new lwHTMLElement('button')
+        .setClasses(['btn', 'btn-primary', 'btn-small'])
+        .setId('testBtn2')
+        .setParent('container')
+        .draw()
+        .text('Simple btn 2')
+
 </script>
