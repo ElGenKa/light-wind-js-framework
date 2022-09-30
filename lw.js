@@ -3,7 +3,7 @@
 /**
  * @name Light Wind
  * @author Denis (ElGen) Ivanov
- * @version 0.1
+ * @version 0.2
  * @description dom library
  * @git https://github.com/ElGenKa/light-wind-js-library
  */
